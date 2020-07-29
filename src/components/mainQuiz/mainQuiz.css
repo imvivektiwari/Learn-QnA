@@ -1,15 +1,50 @@
 #main-quiz-container{
     height: calc(100vh - 70px);
+    max-height: calc(100vh - 70px);;
     display: flex;
+    overflow: auto;
 }
 
 #quiz-form{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+#quiz-form .quiz-form-title{
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bolder;
+    border-bottom: 2px solid gray;
+    padding:10px 0px;
+}
 
-@media screen and (max-width: 500px) {
+#quiz-form > *{
+    width: 500px;
+    margin: 8px 0;
+    color:#fff;
+}
+#quiz-form >*>*{
+    width: 100%;
+    padding:10px;
+}
+
+#quiz-form input[type=submit]{
+    margin: 20px 0;
+    padding: 10px;
+    color: #000;
+}
+
+@media screen and (max-width: 600px) {
     #main-quiz-container{
         height: calc(100vh - 110px);
+        max-height: calc(100vh - 110px);
+    }
+    #quiz-form > *{
+        width: 85%;
+        margin: 8px 0;
+        color:#fff;
     }
 }

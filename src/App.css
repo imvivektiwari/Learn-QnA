@@ -9,6 +9,7 @@
 body{
   background-color: #2c3035;
   font-family: sans-serif;
+  overflow: hidden;
 }
 .App{
   height: 100vh;
