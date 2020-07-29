@@ -1,11 +1,45 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
+import {useDispatch} from 'react-redux';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import './App.css';
+import Header from './components/header/Header';
+import Login from './components/login/Login';
+import Dashboard from './components/Dashboard/Dashboard';
+import MainQuiz from './components/mainQuiz/MainQuiz';
+import { readFromLocalStorage} from './utils/login';
+import { STORE_USER } from './redux/login/loginActionTypes';
+import { storeUserLogin } from './redux/login/loginActions';
 
-function App() {
+const App = ()=>{
+
+  const dispatch = useDispatch();
+  const logoRef = useRef();
+  useEffect(() => {
+    let user = readFromLocalStorage(STORE_USER);
+    if(user){
+      user = JSON.parse(user);
+      dispatch(storeUserLogin(user.email, user.username));
+      goToRoot();
+    }
+  }, [dispatch]);
+
+  const goToRoot = ()=>{
+    logoRef.current.click();
+  }
+
   return (
     <div className="App">
-       Hello World
+        <Router>
+            <Header logoRef={logoRef}/>
+            <Switch>
+                <Route path="/login" exact strict component={()=> <Login goToRoot={goToRoot}/>} />
+                <Route path="/login/:auth" exact strict component={()=> <Login goToRoot={goToRoot}/>} />
+                <Route path="/dashboard" exact strict component={Dashboard} />
+                <Route path="/" exact strict component={MainQuiz} />
+            </Switch>
+        </Router>
     </div>
   );
-}
+};
 
 export default App;

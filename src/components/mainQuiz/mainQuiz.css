@@ -1,0 +1,15 @@
+#main-quiz-container{
+    height: calc(100vh - 70px);
+    display: flex;
+}
+
+#quiz-form{
+    width: 100%;
+}
+
+
+@media screen and (max-width: 500px) {
+    #main-quiz-container{
+        height: calc(100vh - 110px);
+    }
+}

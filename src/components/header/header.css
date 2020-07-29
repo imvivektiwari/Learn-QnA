@@ -1,0 +1,64 @@
+#header{
+    height: 70px;
+    background-color: #1A1329;
+    display: flex;
+}
+#header .header-item{
+    display: flex;
+    align-items: center;
+}
+#header .header-item:first-child{
+    flex: 20%;
+    justify-content: center;
+}
+
+#header .header-item:nth-child(2){
+    flex: 80%;
+    justify-content: flex-end;
+}
+
+#header .logo-text{
+    color:#fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.user-profile{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background: #fff;
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    color: #000;
+    margin-right: 11px;
+}
+
+.user-profile-container{
+    display: flex;
+    align-items: center;
+}
+.sign-auth-text{
+    margin:0px 10px;
+}
+
+@media screen and (max-width: 500px) {
+    #header{
+        flex-direction: column;
+        height: 110px;
+    }
+    .user-profile{
+        display: none;
+    }
+    #header .header-item:first-child{
+        flex: 100%;
+        justify-content: center;
+        padding:5px;
+    }
+    #header .header-item:nth-child(2){
+        flex: 100%;
+        justify-content: center;
+    }
+}
