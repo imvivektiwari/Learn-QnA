@@ -5,11 +5,13 @@ import { decodeHTMLEntities } from '../../utils/utility';
 
 const QuestionForm = ({questions, currectQuestion})=>{
     const activeQuestion = questions[currectQuestion];
-    console.log(activeQuestion)
     return (
         <div id="quiz-question-form">
-            <p className="quiz-item">Category: {activeQuestion?.category}</p>
-            <p className="quiz-item">Level: {activeQuestion?.difficulty}</p>
+             <p className="quiz-item">Category: {activeQuestion?.category}</p>
+            <p className="quiz-item progress">
+                <span>Level: {activeQuestion?.difficulty}</span>
+                <span>Question: {`${currectQuestion+1}/${questions?.length}`}</span>
+            </p>
             <div className="question-form-group">
                 <p className="question-text">
                     {decodeHTMLEntities(activeQuestion?.question)}
@@ -18,6 +20,7 @@ const QuestionForm = ({questions, currectQuestion})=>{
                     correct={activeQuestion?.correct_answer}
                     incorrect={activeQuestion?.incorrect_answers}
                     currectQuestion={currectQuestion}
+                    attempedOption={activeQuestion?.attempedOption}
                 />
             </div>
         </div>

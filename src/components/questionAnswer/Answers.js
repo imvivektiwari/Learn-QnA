@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import {useDispatch} from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { decodeHTMLEntities } from '../../utils/utility';
+import { setAttemptedQuestionAction } from '../../redux/questionsAnswes/questionsAnswersActions';
 
 export default function Answers(props) {
     let answers;
@@ -10,14 +12,22 @@ export default function Answers(props) {
     else if(props?.incorrect){
         answers = [...props.incorrect, ...props.correct]
     }
-    console.log(props.currectQuestion)
-   
+    
+    const dispatch = useDispatch()
+
+    const updateAnswer = (option) => {
+        dispatch(setAttemptedQuestionAction(option, props.currectQuestion))
+    };
+
     return(
         answers? answers.map((option)=>{
             return(
                 <p className="answer-options" key={uuidv4()}>
                     <label>
-                        <input type='radio'name="quiz-option-radio"/>
+                        <input type='radio'name="quiz-option-radio" 
+                        onChange={()=>updateAnswer(option)} 
+                        checked={props.attempedOption===option}
+                        />
                         <span>{decodeHTMLEntities(option)}</span>
                     </label>
                 </p>

@@ -2,8 +2,10 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import { getQuizURL } from '../../utils/utility';
 import './startTest.css'
-import QuestionForm from './QuestionForm';
+import QuestionForm from '../questionAnswer/QuestionForm';
 import { setQuestionAnswersAction, removeQuestionAnswersAction } from '../../redux/questionsAnswes/questionsAnswersActions';
+import { useHistory } from 'react-router-dom';
+import { storeToLocalStorage } from '../../utils/storage';
 
 export default function StartTest() {
     
@@ -18,7 +20,7 @@ export default function StartTest() {
     const selectedDifficultyLevel = quiz.quizForm.difficultyLevels.selected.value;
     const selectedType = quiz.quizForm.types.selected.value;
     const [currectQuestion, setCurrectQuestion] = useState(0);
-
+    const history = useHistory();
     const uref = useRef(true);
     const fetchQuestions = useCallback((url)=>{
         if(uref.current){
@@ -44,16 +46,32 @@ export default function StartTest() {
         }
     }, [dispatch, fetchQuestions, numOfQuestions, selectedCategory, selectedDifficultyLevel, selectedType]);
 
+    const endTest = ()=>{
+        const confirmEnd = window.confirm("Are you sure, you want to end the text");
+        if(confirmEnd){
+            history.push("/result");
+            storeToLocalStorage("prev-submission", JSON.stringify(quiz.questionAnswers))
+        }
+    };
+
     return (
         <div id="quiz-container">
             <div id="quiz-questions-container" >
-                <div id="quiz-questions-form" className="debug">
+                <div id="quiz-questions-form">
                     <QuestionForm questions={quiz.questionAnswers} currectQuestion={currectQuestion}/>
                 </div>
                 <div id="quiz-container-footer">
-                    <button onClick={()=>setCurrectQuestion(currectQuestion-1)}>Previous</button>
-                    <button onClick={()=>setCurrectQuestion(currectQuestion+1)}>Next</button>
-                    <button onClick={()=>setCurrectQuestion(-1)}>End Test</button>
+                    <button onClick={()=>setCurrectQuestion(currectQuestion-1)}
+                    className={`footer-item ${currectQuestion <= 0&&'disabled'}`}
+                    >
+                        Previous
+                    </button>
+                    <button onClick={()=>setCurrectQuestion(currectQuestion+1)}
+                    className={`footer-item ${currectQuestion+1 >= quiz.questionAnswers?.length&&'disabled'}`}
+                    >
+                        Next
+                    </button>
+                    <button to="/result" className="footer-item" onClick={endTest}>End Test</button>
                 </div>
             </div>
         </div>

@@ -7,6 +7,16 @@
     color:#fff;
     padding:10px;
 }
+#quiz-question-form .quiz-item.progress{
+    display: flex;
+}
+#quiz-question-form .quiz-item.progress span{
+    flex:1
+}
+#quiz-question-form .quiz-item.progress span:nth-child(2){
+    display: flex;
+    justify-content: flex-end;
+}
 
 #quiz-question-form .question-form-group{
     margin-top: 15px;

@@ -1,4 +1,4 @@
-import {SET_QUESTIONS, REMOVE_QUESTIONS} from './questionsAnswersActionTypes';
+import {SET_QUESTIONS, REMOVE_QUESTIONS, UPDATE_ATTEMP_ANSWER} from './questionsAnswersActionTypes';
 
 const setQuestionAnswersToStoreAction = (data)=>{
     return{
@@ -17,5 +17,13 @@ export const setQuestionAnswersAction = (url)=>{
 export const removeQuestionAnswersAction= ()=>{
     return{
         type:REMOVE_QUESTIONS,
+    }
+}
+
+
+export const setAttemptedQuestionAction= (answer, questionIndex)=>{
+    return{
+        type:UPDATE_ATTEMP_ANSWER,
+        payload:{answer, questionIndex}
     }
 }

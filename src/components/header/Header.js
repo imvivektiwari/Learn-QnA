@@ -20,8 +20,8 @@ const Header = ({logoRef})=>{
                 <NavLink to="/" exact={true} className={`nav-link ${disabled}`} activeStyle={activeStyle}>
                     Home
                 </NavLink>
-                <NavLink to="/dashboard" exact={true} className={`nav-link ${disabled}`} activeStyle={activeStyle}>
-                    Dashboard
+                <NavLink to="/previousSubmission" exact={true} className={`nav-link ${disabled}`} activeStyle={activeStyle}>
+                    Last Submission
                 </NavLink>
                 {
                 !login.isAuthenticated?

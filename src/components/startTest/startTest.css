@@ -25,10 +25,22 @@
    height: 40px;
 }
 
+#quiz-container-footer .footer-item{
+  font-size: 15px;
+  background-color: #fff;
+  outline: none;
+  border:none;
+}
+
+#quiz-container-footer .footer-item:nth-child(2){
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
 @media screen and (max-width: 600px) {
     #quiz-container{
         height: calc(100vh - 110px);
-        max-height: calc(100vh - 110px);
+        max-height: calc(100vh - 100px);
     }
     #quiz-questions-container{
         width: 100%;

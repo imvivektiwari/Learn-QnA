@@ -1,5 +1,5 @@
 import {READ_USER, STORE_USER, DELETE_USER} from './loginActionTypes';
-import {storeToLocalStorage, deleteFromLocalStorage} from '../../utils/login';
+import {storeToLocalStorage, deleteFromLocalStorage} from '../../utils/storage';
 
 export const readLogin = (userData)=>{
     return{
