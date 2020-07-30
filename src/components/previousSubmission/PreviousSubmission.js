@@ -26,7 +26,7 @@ const PreviousSubmission = ()=>{
                  <p>Hello, {login?.user?.username}</p>
                  <p>Your Score: {`${correctCount}/${quiz?.length || 0}`}</p>
             </div>
-            <table border='1'>
+            <table>
                 <thead>
                    <tr>
                         <th>S.No</th>
