@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOutAlt, faSignInAlt} from '@fortawesome/free-solid-svg-icons'
 
 const Header = ({logoRef})=>{
+
     const login = useSelector((store)=>store.login);
     const disabled = !login.isAuthenticated?"disabled":"";
     const activeStyle={
@@ -40,6 +41,6 @@ const Header = ({logoRef})=>{
             </div>
         </div>
     )
-}
+};
 
 export default Header;

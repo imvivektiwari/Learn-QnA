@@ -1,9 +1,10 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { readFromLocalStorage } from '../../utils/storage';
 import QuestionForm from '../questionAnswer/QuestionForm';
 import './previousSubmission.css'
 import { useSelector } from 'react-redux';
+import { decodeHTMLEntities } from '../../utils/utility';
 
 const PreviousSubmission = ()=>{
     let quiz = readFromLocalStorage("prev-submission");
@@ -13,7 +14,7 @@ const PreviousSubmission = ()=>{
         quiz = JSON.parse(quiz);
         console.log(quiz)
         correctCount = quiz.reduce((accumulator,question)=>{
-            if(question.correct_answer==question.attempedOption){
+            if(question.correct_answer===question.attempedOption){
                 return accumulator+1
             }
             return accumulator;
@@ -42,12 +43,15 @@ const PreviousSubmission = ()=>{
                                 <tr key={uuidv4()} >
                                     <td>{index+1}</td>
                                     <td>
-                                        <QuestionForm questions={quiz} currectQuestion={index} stopChange={true}/>
+                                        <QuestionForm 
+                                            questions={quiz} 
+                                            currectQuestion={index} stopChange={true}
+                                        />
                                     </td>
                                     <td>
                                         {question.correct_answer===question.attempedOption?"Correct":"Incorrect"}
                                     </td>
-                                    <td>{question.correct_answer}</td>
+                                    <td>{decodeHTMLEntities(question.correct_answer)}</td>
                                 </tr>
                             )
                        })

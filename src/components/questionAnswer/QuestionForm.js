@@ -7,10 +7,10 @@ const QuestionForm = ({questions, currectQuestion, stopChange})=>{
     const activeQuestion = questions[currectQuestion];
     return (
         <div id="quiz-question-form">
-            <p className="quiz-item">Category: {activeQuestion?.category}</p>
+            <p className="quiz-item"><b>Category:</b> {activeQuestion?.category}</p>
             <p className="quiz-item progress">
-                <span>Level: {activeQuestion?.difficulty}</span>
-                <span>Question: {`${currectQuestion+1}/${questions?.length}`}</span>
+                <span><b>Level:</b> {activeQuestion?.difficulty}</span>
+                <span><b>Question:</b> {`${currectQuestion+1}/${questions?.length}`}</span>
             </p>
             <div className="question-form-group">
                 <p className="question-text">

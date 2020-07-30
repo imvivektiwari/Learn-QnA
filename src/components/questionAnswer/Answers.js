@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { decodeHTMLEntities } from '../../utils/utility';
 import { setAttemptedQuestionAction } from '../../redux/questionsAnswes/questionsAnswersActions';
+import FormRadio from '../form/FormRadio';
 
 export default function Answers(props) {
     let answers;
@@ -23,13 +24,12 @@ export default function Answers(props) {
         answers? answers.map((option)=>{
             return(
                 <p className="answer-options" key={uuidv4()}>
-                    <label>
-                        <input type='radio'name={`quiz-option-radio-${props.currectQuestion}`} 
-                         onChange={()=> props.stopChange || updateAnswer(option)} 
-                         checked={props.attempedOption===option}
-                        />
-                        <span>{decodeHTMLEntities(option)}</span>
-                    </label>
+                    <FormRadio 
+                        name={`quiz-option-radio-${props.currectQuestion}`}
+                        onChange={()=> props.stopChange || updateAnswer(option)}
+                        checked={props.attempedOption===option}
+                        label={decodeHTMLEntities(option)}
+                    />
                 </p>
             )
         }):null

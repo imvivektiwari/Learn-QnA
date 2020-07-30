@@ -3,7 +3,7 @@
     justify-content: center;
     height: calc(100vh - 70px);
     max-height: calc(100vh - 70px);
-    overflow: scroll;
+    overflow: auto;
 }
 
 #quiz-questions-container{
