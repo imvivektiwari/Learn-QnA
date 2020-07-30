@@ -18,6 +18,16 @@ body{
   opacity: 0.5;
   pointer-events: none;
 }
+
+input[type=number],select,button{
+  outline: none;
+  border: none;
+  border-radius: 3px;
+}
+button:hover, input[type=submit]{
+  cursor: pointer;
+}
+
 .nav-link{
   text-decoration: none;
   margin:0 12px;
