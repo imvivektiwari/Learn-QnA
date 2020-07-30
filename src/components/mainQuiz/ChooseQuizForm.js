@@ -47,6 +47,7 @@ const ChooseQuizForm = ()=>{
                 label="Number of Questions:"
                 value={quizForm.numberOfQuestions}
                 setValue={setNumberOfQuestions}
+                type="number"
             />
             <FormSelect 
                 label={"Select Category:"}
