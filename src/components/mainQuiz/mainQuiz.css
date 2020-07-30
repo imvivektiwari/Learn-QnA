@@ -3,6 +3,7 @@
     max-height: calc(100vh - 70px);;
     display: flex;
     overflow: auto;
+    flex-direction: column;
 }
 
 #quiz-form{

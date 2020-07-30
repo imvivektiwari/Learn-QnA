@@ -17,7 +17,7 @@ const Header = ({logoRef})=>{
                 <Link to="/" className="logo-text" ref={logoRef}>LearnQnA</Link>
             </div>
             <div className="header-item nav-container">
-                <NavLink to="/" exact={true} className={`nav-link ${disabled}`} activeStyle={activeStyle}>
+                <NavLink to="/" exact={true} className={'nav-link'} activeStyle={activeStyle}>
                     Home
                 </NavLink>
                 <NavLink to="/previousSubmission" exact={true} className={`nav-link ${disabled}`} activeStyle={activeStyle}>

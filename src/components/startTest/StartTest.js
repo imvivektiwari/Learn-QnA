@@ -47,7 +47,7 @@ export default function StartTest() {
     }, [dispatch, fetchQuestions, numOfQuestions, selectedCategory, selectedDifficultyLevel, selectedType]);
 
     const endTest = ()=>{
-        const confirmEnd = window.confirm("Are you sure, you want to end the text");
+        const confirmEnd = window.confirm("Are you sure, you want to end the test");
         if(confirmEnd){
             history.push("/previousSubmission");
             storeToLocalStorage("prev-submission", JSON.stringify(quiz.questionAnswers))

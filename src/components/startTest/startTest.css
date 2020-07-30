@@ -3,7 +3,7 @@
     justify-content: center;
     height: calc(100vh - 70px);
     max-height: calc(100vh - 70px);
-    overflow: auto;
+    overflow: scroll;
 }
 
 #quiz-questions-container{
@@ -39,8 +39,8 @@
 
 @media screen and (max-width: 600px) {
     #quiz-container{
-        height: calc(100vh - 110px);
-        max-height: calc(100vh - 100px);
+        height: calc(100vh - 173px);
+        max-height: calc(100vh - 110px);
     }
     #quiz-questions-container{
         width: 100%;
