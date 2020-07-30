@@ -9,10 +9,11 @@ export const questionAndAnswersReducer = (state=initialState, action)=>{
             const appendAns = action.payload.map((question)=>{
                 return {
                     ...question,
-                    attempedOption:false
+                    attempedOption:''
                 }
             });
             newState = appendAns;
+            console.log(newState);
             break;
         case REMOVE_QUESTIONS:
             newState = []

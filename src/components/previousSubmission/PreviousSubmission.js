@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import { readFromLocalStorage } from '../../utils/storage';
 import QuestionForm from '../questionAnswer/QuestionForm';
 import './previousSubmission.css'
@@ -23,7 +24,7 @@ const PreviousSubmission = ()=>{
         <div id="prev-submission-container">
             <div id="show-result">
                  <p>Hello, {login?.user?.username}</p>
-                 <p>Your Score: {`${correctCount}/${quiz.length}`}</p>
+                 <p>Your Score: {`${correctCount}/${quiz?.length || 0}`}</p>
             </div>
             <table border='1'>
                 <thead>
@@ -36,15 +37,15 @@ const PreviousSubmission = ()=>{
                 </thead>
                <tbody>
                    {
-                       quiz.map((question, index)=>{
+                       quiz && quiz.map((question, index)=>{
                             return(
-                                <tr key={index}>
+                                <tr key={uuidv4()} >
                                     <td>{index+1}</td>
                                     <td>
-                                        <QuestionForm questions={quiz} currectQuestion={index}/>
+                                        <QuestionForm questions={quiz} currectQuestion={index} stopChange={true}/>
                                     </td>
                                     <td>
-                                        {question.correct_answer==question.attempedOption?"Correct":"Incorrect"}
+                                        {question.correct_answer===question.attempedOption?"Correct":"Incorrect"}
                                     </td>
                                     <td>{question.correct_answer}</td>
                                 </tr>

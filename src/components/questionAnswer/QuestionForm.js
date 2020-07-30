@@ -3,11 +3,11 @@ import './questionForm.css';
 import Answers from './Answers';
 import { decodeHTMLEntities } from '../../utils/utility';
 
-const QuestionForm = ({questions, currectQuestion})=>{
+const QuestionForm = ({questions, currectQuestion, stopChange})=>{
     const activeQuestion = questions[currectQuestion];
     return (
         <div id="quiz-question-form">
-             <p className="quiz-item">Category: {activeQuestion?.category}</p>
+            <p className="quiz-item">Category: {activeQuestion?.category}</p>
             <p className="quiz-item progress">
                 <span>Level: {activeQuestion?.difficulty}</span>
                 <span>Question: {`${currectQuestion+1}/${questions?.length}`}</span>
@@ -21,6 +21,7 @@ const QuestionForm = ({questions, currectQuestion})=>{
                     incorrect={activeQuestion?.incorrect_answers}
                     currectQuestion={currectQuestion}
                     attempedOption={activeQuestion?.attempedOption}
+                    stopChange={stopChange}
                 />
             </div>
         </div>

@@ -18,15 +18,15 @@ export default function Answers(props) {
     const updateAnswer = (option) => {
         dispatch(setAttemptedQuestionAction(option, props.currectQuestion))
     };
-
+    
     return(
         answers? answers.map((option)=>{
             return(
                 <p className="answer-options" key={uuidv4()}>
                     <label>
-                        <input type='radio'name="quiz-option-radio" 
-                        onChange={()=>updateAnswer(option)} 
-                        checked={props.attempedOption===option}
+                        <input type='radio'name={`quiz-option-radio-${props.currectQuestion}`} 
+                         onChange={()=> props.stopChange || updateAnswer(option)} 
+                         checked={props.attempedOption===option}
                         />
                         <span>{decodeHTMLEntities(option)}</span>
                     </label>

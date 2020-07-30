@@ -49,7 +49,7 @@ export default function StartTest() {
     const endTest = ()=>{
         const confirmEnd = window.confirm("Are you sure, you want to end the text");
         if(confirmEnd){
-            history.push("/result");
+            history.push("/previousSubmission");
             storeToLocalStorage("prev-submission", JSON.stringify(quiz.questionAnswers))
         }
     };
