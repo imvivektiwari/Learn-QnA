@@ -14,7 +14,7 @@ const QuestionForm = ({questions, currectQuestion, stopChange})=>{
             </p>
             <div className="question-form-group">
                 <p className="question-text">
-                    {decodeHTMLEntities(activeQuestion?.question)}
+                    {decodeHTMLEntities(activeQuestion?.question || 'Loading...')}
                 </p>
                 <Answers type={activeQuestion?.type} 
                     correct={activeQuestion?.correct_answer}
