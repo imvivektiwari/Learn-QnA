@@ -14,3 +14,10 @@ export const getQuizURL = (quizForm)=>{
 
     return url;
 };
+
+export const decodeHTMLEntities = (text)=>{
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = text;
+    const value = textArea.value;
+    return value;
+}

@@ -1,22 +1,31 @@
-import React, { useEffect, useState, useRef } from 'react'
-import {useSelector} from 'react-redux';
+import React, { useEffect, useState, useRef, useCallback } from 'react'
+import {useSelector, useDispatch} from 'react-redux';
 import { getQuizURL } from '../../utils/utility';
+import './startTest.css'
+import QuestionForm from './QuestionForm';
+import { setQuestionAnswersAction, removeQuestionAnswersAction } from '../../redux/questionsAnswes/questionsAnswersActions';
 
 export default function StartTest() {
-    const quizForm = useSelector(state => state.quizForm);
-    const numOfQuestions = quizForm.numberOfQuestions;
-    const selectedCategory = quizForm.categories.selected.value;
-    const selectedDifficultyLevel = quizForm.difficultyLevels.selected.value;
-    const selectedType = quizForm.types.selected.value;
-    const [questions, setQuestions] = useState([])
+    
+    const quiz = useSelector(state => ({
+        quizForm: state.quizForm,
+        questionAnswers:state.questionAnswers
+    }));
+
+    const dispatch = useDispatch();
+    const numOfQuestions = quiz.quizForm.numberOfQuestions;
+    const selectedCategory = quiz.quizForm.categories.selected.value;
+    const selectedDifficultyLevel = quiz.quizForm.difficultyLevels.selected.value;
+    const selectedType = quiz.quizForm.types.selected.value;
+    const [currectQuestion, setCurrectQuestion] = useState(0);
+
     const uref = useRef(true);
-    const fetchQuestions = async (url)=>{
-        const responce = await (await fetch(url)).json();
+    const fetchQuestions = useCallback((url)=>{
         if(uref.current){
-             console.log("updated");
-             setQuestions(responce.results);
+            console.log("fetching quiz");
+            dispatch(setQuestionAnswersAction(url));
         }
-    };
+    }, [dispatch]);
 
     useEffect(()=>{
         let formValues = {
@@ -25,15 +34,28 @@ export default function StartTest() {
             selectedDifficultyLevel,
             selectedType
         }
-        fetchQuestions(getQuizURL(formValues));
+        setTimeout(()=>{
+            fetchQuestions(getQuizURL(formValues));
+        }, 500);
+        
         return ()=>{
             uref.current=false;
+            dispatch(removeQuestionAnswersAction());
         }
-    }, [numOfQuestions, selectedCategory, selectedDifficultyLevel, selectedType]);
+    }, [dispatch, fetchQuestions, numOfQuestions, selectedCategory, selectedDifficultyLevel, selectedType]);
 
     return (
-        <div>
-            
+        <div id="quiz-container">
+            <div id="quiz-questions-container" >
+                <div id="quiz-questions-form" className="debug">
+                    <QuestionForm questions={quiz.questionAnswers} currectQuestion={currectQuestion}/>
+                </div>
+                <div id="quiz-container-footer">
+                    <button onClick={()=>setCurrectQuestion(currectQuestion-1)}>Previous</button>
+                    <button onClick={()=>setCurrectQuestion(currectQuestion+1)}>Next</button>
+                    <button onClick={()=>setCurrectQuestion(-1)}>End Test</button>
+                </div>
+            </div>
         </div>
     )
 }

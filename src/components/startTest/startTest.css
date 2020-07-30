@@ -1,0 +1,36 @@
+#quiz-container{
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 70px);
+    max-height: calc(100vh - 70px);
+    overflow: auto;
+}
+
+#quiz-questions-container{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+#quiz-questions-form{
+    flex:1;
+}
+
+#quiz-container-footer{
+    display: flex;
+}
+
+#quiz-container-footer > *{
+   flex: 1;
+   height: 40px;
+}
+
+@media screen and (max-width: 600px) {
+    #quiz-container{
+        height: calc(100vh - 110px);
+        max-height: calc(100vh - 110px);
+    }
+    #quiz-questions-container{
+        width: 100%;
+    }
+}

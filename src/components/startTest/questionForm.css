@@ -1,0 +1,27 @@
+#quiz-question-form{
+    padding:10px;
+}
+
+#quiz-question-form .quiz-item{
+    text-transform: capitalize;
+    color:#fff;
+    padding:10px;
+}
+
+#quiz-question-form .question-form-group{
+    margin-top: 15px;
+    padding: 10px;
+    color:#000;
+    background-color: #fff;
+    border-radius: 3px;
+}
+
+#quiz-question-form .question-text{
+    padding: 5px 0;
+}
+#quiz-question-form .answer-options{
+    padding: 5px 0px;
+}
+#quiz-question-form .answer-options input{
+    margin-right: 10px;
+}
