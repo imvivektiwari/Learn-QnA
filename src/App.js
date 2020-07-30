@@ -9,6 +9,7 @@ import MainQuiz from './components/mainQuiz/MainQuiz';
 import { readFromLocalStorage} from './utils/login';
 import { STORE_USER } from './redux/login/loginActionTypes';
 import { storeUserLogin } from './redux/login/loginActions';
+import StartTest from './components/startTest/StartTest';
 
 const App = ()=>{
 
@@ -35,6 +36,7 @@ const App = ()=>{
                 <Route path="/login" exact strict component={()=> <Login goToRoot={goToRoot}/>} />
                 <Route path="/login/:auth" exact strict component={()=> <Login goToRoot={goToRoot}/>} />
                 <Route path="/dashboard" exact strict component={Dashboard} />
+                <Route path="/startTest" exact strict component={StartTest} />
                 <Route path="/" exact strict component={MainQuiz} />
             </Switch>
         </Router>

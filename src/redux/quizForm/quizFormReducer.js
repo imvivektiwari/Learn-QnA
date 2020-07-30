@@ -110,43 +110,43 @@ const initialState={
     },
     difficultyLevels: {
         selected: {
-            "value":0
+            "value":'any'
         },
         difficultyLevelOptions: [
             {
                 "text":'Any Difficulty',
-                "value":0
+                "value":'any'
             },
             {
                 "text":'Easy',
-                "value":1
+                "value":'easy'
             },
             {
                 "text":'Medium',
-                "value":2
+                "value":'medium'
             },
             {
                 "text":'Hard',
-                "value":3
+                "value":'hard'
             },
         ]
     },
     types:{
         selected:{
-            "value":0
+            "value":'any'
         },
         typeOptions: [
             {
                 "text":'Any Type', 
-                "value":0
+                "value":'any'
             },
             {
                 "text":'Multiple Choice', 
-                "value":1,
+                "value":'multiple',
             },
             {
                 "text":'True/False', 
-                "value":2
+                "value":'boolean'
             }
         ]
     }

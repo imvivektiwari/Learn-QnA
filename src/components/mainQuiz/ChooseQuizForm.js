@@ -1,9 +1,11 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux';
 import { setSelectedCategory, setSelectedLevel, setSelectedType, setQuestionCount } from '../../redux/quizForm/quizFromActions';
+import { useHistory } from 'react-router-dom';
 const ChooseQuizForm = ()=>{
     const quizForm = useSelector(state => state.quizForm);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const setCategory = (event)=>{
         let value = event.target.value;
@@ -27,6 +29,7 @@ const ChooseQuizForm = ()=>{
 
     const startQuiz = (event)=>{
         event.preventDefault();
+        history.push("/startTest");
     }
     
     return (
