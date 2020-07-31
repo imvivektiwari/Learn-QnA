@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import './header.css';
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignOutAlt, faSignInAlt} from '@fortawesome/free-solid-svg-icons'
+import { faSignOutAlt, faSignInAlt, faHome, faStream, faBookReader} from '@fortawesome/free-solid-svg-icons'
 
 const Header = ({logoRef})=>{
 
@@ -15,14 +15,16 @@ const Header = ({logoRef})=>{
     return (
         <div id="header">
             <div className="header-item logo-container">
-                <Link to="/" className="logo-text" ref={logoRef}>LearnQnA</Link>
+                <Link to="/" className="logo-text" ref={logoRef}>
+                     <FontAwesomeIcon icon={faBookReader}/> LearnQnA
+                </Link>
             </div>
             <div className="header-item nav-container">
                 <NavLink to="/" exact={true} className={'nav-link'} activeStyle={activeStyle}>
-                    Home
+                   <FontAwesomeIcon icon={faHome}/> Home
                 </NavLink>
                 <NavLink to="/previousSubmission" exact={true} className={`nav-link ${disabled}`} activeStyle={activeStyle}>
-                    Last Submission
+                    <FontAwesomeIcon icon={faStream}/>  Last Submission
                 </NavLink>
                 {
                 !login.isAuthenticated?
