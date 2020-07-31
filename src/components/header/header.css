@@ -48,7 +48,7 @@
     #header{
         flex-direction: column;
         height: 110px;
-        font-size:14px;
+        font-size:12px;
     }
     .user-profile{
         display: none;

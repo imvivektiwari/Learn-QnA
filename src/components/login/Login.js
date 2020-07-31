@@ -12,8 +12,14 @@ const Login = ({goToRoot})=>{
             event.preventDefault();
             let email = event.target.email.value;
             let username = event.target.username.value;
-            dispatch(storeUserLogin(email, username));
-            goToRoot();
+            if(email && username){
+                dispatch(storeUserLogin(email, username));
+                goToRoot();
+            }
+            else{
+                ///show alert once the main thread is free
+                setTimeout(()=>alert("Please provide the details"), 0);
+            }
         }, [dispatch, goToRoot]
     );
 

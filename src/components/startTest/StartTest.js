@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react'
 import {useSelector, useDispatch} from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { getQuizURL } from '../../utils/utility';
 import './startTest.css'
 import QuestionForm from '../questionAnswer/QuestionForm';
@@ -7,6 +8,7 @@ import { setQuestionAnswersAction, removeQuestionAnswersAction } from '../../red
 import { useHistory } from 'react-router-dom';
 import { storeToLocalStorage } from '../../utils/storage';
 import Welcome from '../welcome/Welcome';
+import { faArrowLeft, faArrowRight, faStop } from '@fortawesome/free-solid-svg-icons';
 
 export default function StartTest() {
     
@@ -72,16 +74,16 @@ export default function StartTest() {
                             <button onClick={()=>setCurrectQuestion(currectQuestion-1)}
                                 className={`footer-item ${currectQuestion <= 0 && 'disabled'}`}
                             >
-                                Previous
+                             <FontAwesomeIcon icon={faArrowLeft} className="icon"/> Previous
                             </button>
                             <button onClick={()=>setCurrectQuestion(currectQuestion+1)}
                                 className={`footer-item ${currectQuestion + 1 >= quiz.questionAnswers?.length && 'disabled'}`}
                             >
-                                Next
+                                Next <FontAwesomeIcon icon={faArrowRight} className="icon"/>
                             </button>
                             <button to="/result" 
                                 className="footer-item" onClick={endTest}>
-                                End Test
+                                <FontAwesomeIcon icon={faStop} className="icon"/> End Test
                             </button>
                         </div>
                     </div>
